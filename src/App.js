@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<User />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/error" element={<Error />} />
+        <Route path="/admin/*" element={<Admin />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

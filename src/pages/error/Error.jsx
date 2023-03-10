@@ -6,7 +6,7 @@ const cx = classNames.bind(style);
 function Error() {
   return (
     <>
-      <div className={cx("error")}>1253</div>
+      <div className={cx("error")}>404 error</div>
     </>
   );
 }
