@@ -29,7 +29,7 @@ const cx = classNames.bind(style);
 
 function Admins() {
   return (
-    <Layout className={cx('contain')}>
+    <Layout className={cx("contain")}>
       <Content className={cx("content-out")}>
         <Layout className={cx("layout")}>
           <Sider>
