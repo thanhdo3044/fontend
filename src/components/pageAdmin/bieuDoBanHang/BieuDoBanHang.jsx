@@ -37,11 +37,10 @@ function BieuDoBanHang() {
     navigate(e.target.value);
   };
   return (
-<<<<<<< HEAD
-    <div className={cx("contain")}>  
-      <LinePlots dataChart={dataAPI} />
-=======
+
     <div className={cx("contain")}>
+      {/* <div className={cx("contain")}>   */}
+      {/* <LinePlots dataChart={dataAPI} /> */}
       <div>
         <Radio.Group onChange={onChange}>
           <Radio.Button value="xuHuong">Xu hướng</Radio.Button>
@@ -92,7 +91,6 @@ function BieuDoBanHang() {
           />
         </Routes>
       </Row>
->>>>>>> 5ecf51a7f5fedba17fb51aa27c6b64378595ca9b
     </div>
   );
 }
