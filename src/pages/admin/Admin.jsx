@@ -5,6 +5,7 @@ import {
   UserOutlined,
   ReconciliationOutlined,
   TeamOutlined,
+  SolutionOutlined,
   ProfileOutlined,
   ScheduleOutlined,
   DollarCircleOutlined,
@@ -21,6 +22,7 @@ import BieuDoBanHang from "../../components/pageAdmin/bieuDoBanHang/BieuDoBanHan
 import QuanLyNguoiDung from "./../../components/pageAdmin/quanLyNguoiDung/QuanLyNguoiDung";
 import QuanLyNhanVien from "../../components/pageAdmin/quanLyNhanVien/QuanLyNhanVien";
 import QuanLySanPham from "../../components/pageAdmin/quanLySanPham/QuanLySanPham";
+import QuanLyMenu from "../../components/pageAdmin/quanLyMenu/QuanLyMenu";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -29,11 +31,17 @@ const cx = classNames.bind(style);
 
 function Admins() {
   return (
-    <Layout className={cx('contain')}>
+    <Layout className={cx("contain")}>
       <Content className={cx("content-out")}>
         <Layout className={cx("layout")}>
           <Sider>
             <Menu mode="inline" className={cx("menu")} theme="light">
+              <Menu.Item key="9">
+                <Link to="/admin/QuanLyMenu">
+                  <SolutionOutlined />
+                  <span>Quản lý menu</span>
+                </Link>
+              </Menu.Item>
               <Menu.Item key="1">
                 <Link to="/admin/bieudobanhang">
                   <PieChartOutlined />
@@ -101,10 +109,14 @@ function Admins() {
           <Content className={cx("content-in")}>
             <div className={cx("header")}>
               <Routes>
-                <Route path="/anhsanpham" element={<AnhSanPham />} />
-                <Route path="/quanlynhanvien" element={<QuanLyNhanVien />} />
-                <Route path="/quanlynguoidung" element={<QuanLyNguoiDung />} />
-                <Route path="/bieudobanhang" element={<BieuDoBanHang />} />
+                <Route path="/anhsanpham/*" element={<AnhSanPham />} />
+                <Route path="/QuanLyMenu/*" element={<QuanLyMenu />} />
+                <Route path="/quanlynhanvien/*" element={<QuanLyNhanVien />} />
+                <Route
+                  path="/quanlynguoidung/*"
+                  element={<QuanLyNguoiDung />}
+                />
+                <Route path="/bieudobanhang/*" element={<BieuDoBanHang />} />
                 <Route path="/quanlysanpham/*" element={<QuanLySanPham />} />
               </Routes>
             </div>

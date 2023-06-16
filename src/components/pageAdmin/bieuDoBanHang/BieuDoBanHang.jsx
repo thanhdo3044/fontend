@@ -6,7 +6,8 @@ import BasicLine from "./BieuDo/BasicLine";
 import ChartPie from "./BieuDo/ChartPie";
 import CornerRadius from "./BieuDo/CornerRadiu";
 
-import { Col, Row, Card, Space } from "antd";
+import { Route, Routes, Link, useNavigate } from "react-router-dom";
+import { Col, Row, Card, Space, Radio } from "antd";
 
 const dataAPI = [
   {
@@ -28,10 +29,22 @@ const dataAPI = [
 ];
 
 const cx = classNames.bind(style);
+
 function BieuDoBanHang() {
+  const navigate = useNavigate();
+  const onChange = (e) => {
+    console.log(e.target.value);
+    navigate(e.target.value);
+  };
   return (
     <div className={cx("contain")}>
-      <h1>Bảng biểu đồ bán hàng</h1>
+      <div>
+        <Radio.Group onChange={onChange}>
+          <Radio.Button value="xuHuong">Xu hướng</Radio.Button>
+          <Radio.Button value="doanhSo">Doanh số</Radio.Button>
+          <Radio.Button value="sanPham">Sản phẩm</Radio.Button>
+        </Radio.Group>
+      </div>
       <Row className={cx("chart")}>
         <Col span={8}>
           <Row>
@@ -45,22 +58,35 @@ function BieuDoBanHang() {
             </div>
           </Row>
         </Col>
-        <Col span={16} className={cx("corner-radius")}>
-          <CornerRadius dataAPI={dataAPI} />
-          <h3>Lượng hàng nhật theo từng sản phẩm</h3>
-        </Col>
-      </Row>
-      <Row className={cx("chart")}>
-        <Col span={24} className={cx("line-plots")}>
-          <LinePlots dataChart={dataAPI} />
-          <h3>Xu hướng sản phẩm bán của của hàng</h3>
-        </Col>
-      </Row>
-      <Row className={cx("chart")}>
-        <Col span={24} className={cx("basic-line")}>
-          <BasicLine dataAPI={dataAPI} />
-          <h3>Doanh số bán hàng théo tháng</h3>
-        </Col>
+        <Routes>
+          <Route
+            path="/xuHuong"
+            element={
+              <Col span={16} className={cx("line-plots")}>
+                <CornerRadius dataChart={dataAPI} />
+                <h3>Xu hướng sản phẩm bán của của hàng</h3>
+              </Col>
+            }
+          />
+          <Route
+            path="/doanhSo"
+            element={
+              <Col span={16} className={cx("line-plots")}>
+                <LinePlots dataChart={dataAPI} />
+                <h3>Xu hướng sản phẩm bán của của hàng</h3>
+              </Col>
+            }
+          />
+          <Route
+            path="/sanPham"
+            element={
+              <Col span={16} className={cx("basic-line")}>
+                <BasicLine dataAPI={dataAPI} />
+                <h3>Doanh số bán hàng théo tháng</h3>
+              </Col>
+            }
+          />
+        </Routes>
       </Row>
     </div>
   );
