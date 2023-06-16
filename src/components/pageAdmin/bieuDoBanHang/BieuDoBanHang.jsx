@@ -25,8 +25,7 @@ const dataAPI = [
 const cx = classNames.bind(style);
 function BieuDoBanHang() {
   return (
-    <div className={cx("contain")}>
-      
+    <div className={cx("contain")}>  
       <LinePlots dataChart={dataAPI} />
     </div>
   );
