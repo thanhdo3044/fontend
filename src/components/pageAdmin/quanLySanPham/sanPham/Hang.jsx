@@ -1,13 +1,9 @@
-import style from "./QuanLyNhanVien.module.scss";
-import classNames from "classnames/bind";
-
-import { Table, Popconfirm, Button } from "antd";
+import { Table } from "antd";
 import { useState } from "react";
 
 const data = [
   {
     key: "1",
-    id: "1",
     TenHang: "John Brown",
     SoLuong: 98,
     DonGiaBan: 60,
@@ -17,12 +13,9 @@ const data = [
   },
 ];
 
-const cx = classNames.bind(style);
-function QuanLyNhanVien() {
+function Hang() {
   const [sortedInfo, setSortedInfo] = useState({});
-  const onDelete = (id) => {
-    console.log("id", id);
-  };
+
   const columns = [
     {
       key: "TenHang",
@@ -76,45 +69,17 @@ function QuanLyNhanVien() {
         sortedInfo.columnKey === "NoiDungGiamGia" ? sortedInfo.order : null,
       ellipsis: true,
     },
-    {
-      key: "id",
-      title: "",
-      render(text, record) {
-        return (
-          <div>
-            <Popconfirm
-              title="Bạn có chắc muốn thêm không ?"
-              onConfirm={() => onDelete(record)}
-            >
-              <Button>Thêm </Button>
-            </Popconfirm>
-            <Popconfirm
-              title="Bạn có chắc muốn sửa không ?"
-              onConfirm={() => onDelete(record)}
-            >
-              <Button>Sửa </Button>
-            </Popconfirm>
-            <Popconfirm
-              title="Bạn có chắc muốn xóa không ?"
-              onConfirm={() => onDelete(record.id)}
-            >
-              <Button>Xóa </Button>
-            </Popconfirm>
-          </div>
-        );
-      },
-    },
   ];
   return (
-    <div className={cx("container")}>
+    <div>
       <Table
         columns={columns}
         dataSource={data}
         // onChange={handleChange}
-        // scroll={{ x: 1500, y: 1500 }}
+        scroll={{ x: 2000, y: 500 }}
       />
     </div>
   );
 }
 
-export default QuanLyNhanVien;
+export default Hang;

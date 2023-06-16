@@ -2,6 +2,12 @@ import style from "./BieuDoBanHang.module.scss";
 import classNames from "classnames/bind";
 
 import LinePlots from "./BieuDo/LinePlots";
+import BasicLine from "./BieuDo/BasicLine";
+import ChartPie from "./BieuDo/ChartPie";
+import CornerRadius from "./BieuDo/CornerRadiu";
+
+import { Route, Routes, Link, useNavigate } from "react-router-dom";
+import { Col, Row, Card, Space, Radio } from "antd";
 
 const dataAPI = [
   {
@@ -23,10 +29,70 @@ const dataAPI = [
 ];
 
 const cx = classNames.bind(style);
+
 function BieuDoBanHang() {
+  const navigate = useNavigate();
+  const onChange = (e) => {
+    console.log(e.target.value);
+    navigate(e.target.value);
+  };
   return (
+<<<<<<< HEAD
     <div className={cx("contain")}>  
       <LinePlots dataChart={dataAPI} />
+=======
+    <div className={cx("contain")}>
+      <div>
+        <Radio.Group onChange={onChange}>
+          <Radio.Button value="xuHuong">Xu hướng</Radio.Button>
+          <Radio.Button value="doanhSo">Doanh số</Radio.Button>
+          <Radio.Button value="sanPham">Sản phẩm</Radio.Button>
+        </Radio.Group>
+      </div>
+      <Row className={cx("chart")}>
+        <Col span={8}>
+          <Row>
+            <div className={cx("chart-pie")}>
+              <ChartPie dataAPI={dataAPI} />
+            </div>
+          </Row>
+          <Row>
+            <div className={cx("chart-pie")}>
+              <ChartPie dataAPI={dataAPI} />
+            </div>
+          </Row>
+        </Col>
+        <Routes>
+          <Route
+            path="/xuHuong"
+            element={
+              <Col span={16} className={cx("line-plots")}>
+                <CornerRadius dataChart={dataAPI} />
+                <h3>Xu hướng sản phẩm bán của của hàng</h3>
+              </Col>
+            }
+          />
+          <Route
+            path="/doanhSo"
+            element={
+              <Col span={16} className={cx("line-plots")}>
+                <LinePlots dataChart={dataAPI} />
+                <h3>Xu hướng sản phẩm bán của của hàng</h3>
+              </Col>
+            }
+          />
+          <Route
+            path="/sanPham"
+            element={
+              <Col span={16} className={cx("basic-line")}>
+                <BasicLine dataAPI={dataAPI} />
+                <h3>Doanh số bán hàng théo tháng</h3>
+              </Col>
+            }
+          />
+        </Routes>
+      </Row>
+>>>>>>> 5ecf51a7f5fedba17fb51aa27c6b64378595ca9b
     </div>
   );
 }

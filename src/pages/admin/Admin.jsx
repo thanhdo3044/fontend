@@ -5,7 +5,7 @@ import {
   UserOutlined,
   ReconciliationOutlined,
   TeamOutlined,
-  CalendarOutlined,
+  SolutionOutlined,
   ProfileOutlined,
   ScheduleOutlined,
   DollarCircleOutlined,
@@ -22,6 +22,7 @@ import BieuDoBanHang from "../../components/pageAdmin/bieuDoBanHang/BieuDoBanHan
 import QuanLyNguoiDung from "./../../components/pageAdmin/quanLyNguoiDung/QuanLyNguoiDung";
 import QuanLyNhanVien from "../../components/pageAdmin/quanLyNhanVien/QuanLyNhanVien";
 import QuanLySanPham from "../../components/pageAdmin/quanLySanPham/QuanLySanPham";
+import QuanLyMenu from "../../components/pageAdmin/quanLyMenu/QuanLyMenu";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -30,71 +31,77 @@ const cx = classNames.bind(style);
 
 function Admins() {
   return (
-    <Layout>
+    <Layout className={cx("contain")}>
       <Content className={cx("content-out")}>
         <Layout className={cx("layout")}>
           <Sider>
             <Menu mode="inline" className={cx("menu")} theme="light">
-              <Menu.Item key="1">
-                <Link to="/admin/quanlysanpham">
-                  <TeamOutlined />
-                  <span>Quản lý nhân viên</span>
+              <Menu.Item key="9">
+                <Link to="/admin/QuanLyMenu">
+                  <SolutionOutlined />
+                  <span>Quản lý menu</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="2">
+              <Menu.Item key="1">
                 <Link to="/admin/bieudobanhang">
                   <PieChartOutlined />
                   <span>Biểu đồ bán hàng</span>
                 </Link>
               </Menu.Item>
+              <Menu.Item key="2">
+                <Link to="/admin/quanlynhanvien">
+                  <TeamOutlined />
+                  <span>Quản lý nhân viên</span>
+                </Link>
+              </Menu.Item>
+
               <Menu.Item key="3">
                 <Link to="/admin/quanlynguoidung">
                   <UserOutlined />
                   <span>Quản lý người dùng</span>
                 </Link>
               </Menu.Item>
-              <SubMenu
-                key="sub1"
-                title={
-                  <span>
-                    <Link to="/admin/anhsanpham">
-                      <PictureOutlined />
-                      <span>Ảnh sản phẩm </span>
-                    </Link>
-                  </span>
-                }
-              >
-                <Menu.Item>
-                  <CalendarOutlined />
-                  <span>Diệp đặc biệt</span>
-                </Menu.Item>
-              </SubMenu>
+
+              <Menu.Item key="4">
+                <Link to="/admin/anhsanpham">
+                  <PictureOutlined />
+                  <span>Ảnh sản phẩm </span>
+                </Link>
+              </Menu.Item>
               <SubMenu
                 key="sub2"
                 title={
-                  <span>
-                    <Link to="/admin/quanlysanpham">
+                  <Link to="/admin/quanlysanpham">
+                    <span>
                       <ReconciliationOutlined />
                       <span>Quản lý sản phẩm</span>
-                    </Link>
-                  </span>
+                    </span>
+                  </Link>
                 }
               >
-                <Menu.Item key="4">
-                  <ProfileOutlined />
-                  <span>Chi Tiết Hóa Đơn</span>
-                </Menu.Item>
                 <Menu.Item key="5">
-                  <ScheduleOutlined />
-                  <span>Hóa Đơn Bán Hàng</span>
+                  <Link to="/admin/quanlysanpham/chitiethoadon">
+                    <ProfileOutlined />
+                    <span>Chi Tiết Hóa Đơn</span>
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="6">
-                  <DollarCircleOutlined />
-                  <span>Hàng</span>
+                  <Link to="/admin/quanlysanpham/hoadonbanhang">
+                    <ScheduleOutlined />
+                    <span>Hóa Đơn Bán Hàng</span>
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="7">
-                  <ProjectOutlined />
-                  <span>Loại Hàng</span>
+                  <Link to="/admin/quanlysanpham/hang">
+                    <DollarCircleOutlined />
+                    <span>Hàng</span>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="8">
+                  <Link to="/admin/quanlysanpham/loaihang">
+                    <ProjectOutlined />
+                    <span>Loại Hàng</span>
+                  </Link>
                 </Menu.Item>
               </SubMenu>
             </Menu>
@@ -102,11 +109,15 @@ function Admins() {
           <Content className={cx("content-in")}>
             <div className={cx("header")}>
               <Routes>
-                <Route path="/anhsanpham" element={<AnhSanPham />} />
-                <Route path="/quanlynhanvien" element={<QuanLyNhanVien />} />
-                <Route path="/quanlynguoidung" element={<QuanLyNguoiDung />} />
-                <Route path="/bieudobanhang" element={<BieuDoBanHang />} />
-                <Route path="/quanlysanpham" element={<QuanLySanPham />} />
+                <Route path="/anhsanpham/*" element={<AnhSanPham />} />
+                <Route path="/QuanLyMenu/*" element={<QuanLyMenu />} />
+                <Route path="/quanlynhanvien/*" element={<QuanLyNhanVien />} />
+                <Route
+                  path="/quanlynguoidung/*"
+                  element={<QuanLyNguoiDung />}
+                />
+                <Route path="/bieudobanhang/*" element={<BieuDoBanHang />} />
+                <Route path="/quanlysanpham/*" element={<QuanLySanPham />} />
               </Routes>
             </div>
           </Content>
